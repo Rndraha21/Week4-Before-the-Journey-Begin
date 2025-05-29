@@ -8,7 +8,21 @@ Contoh:
 */
 
 function totalDigitRekursif(angka) {
-  // you can only write your code here!
+  if (angka < 10) return angka;
+
+  return (angka % 10) + totalDigitRekursif(Math.floor(angka / 10));
+
+  /*
+  izin nyatat disini sir biar lebih ingat-ingat
+  visualisasi:
+  return (512 % 10) + totalDigitRekursif(Math.floor(512 / 10))
+          2 + totalDigitRekursif(51)
+  return (51 % 10) + totalDigitRekursif(Math.floor(51 / 10))
+          1 + totalDigitRekursif(5)
+  return 5
+  menjadi return 5 + 1
+  menjadi return 6 + 2
+  */
 }
 
 // TEST CASES
