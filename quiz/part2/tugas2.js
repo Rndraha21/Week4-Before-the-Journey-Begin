@@ -8,16 +8,37 @@ Output yang diharapkan: [ [ <daftar_hero_dengan_tipe_ranged> ], [ <daftar_hero_d
 Jika input adalah string kosong ('') maka return array kosong
 */
 
-function meleeRangedGrouping (str) {
-  //your code here
+function meleeRangedGrouping(str) {
+  if (str === "") return [];
+
+  let ranged = [];
+  let melee = [];
+
+  let listHero = str.split(",");
+
+  for (let item of listHero) {
+    let [name, type] = item.split('-')
+    if (type === "Ranged") {
+      ranged.push(name);
+    } else if (type === "Melee") {
+      melee.push(name);
+    }
+  }
+  return [ranged, melee];
 }
 
 // TEST CASE
 
-console.log(meleeRangedGrouping('Razor-Ranged,Invoker-Ranged,Meepo-Melee,Axe-Melee,Sniper-Ranged'));
+console.log(
+  meleeRangedGrouping(
+    "Razor-Ranged,Invoker-Ranged,Meepo-Melee,Axe-Melee,Sniper-Ranged"
+  )
+);
 // [ ['Razor', 'Invoker', 'Sniper'], ['Meepo', 'Axe'] ]
 
-console.log(meleeRangedGrouping('Drow Ranger-Ranged,Chen-Ranged,Dazzle-Ranged,Io-Ranged'));
+console.log(
+  meleeRangedGrouping("Drow Ranger-Ranged,Chen-Ranged,Dazzle-Ranged,Io-Ranged")
+);
 // [ ['Drow Ranger', 'Chen', 'Dazzle', 'Io'], [] ]
 
-console.log(meleeRangedGrouping('')); // []
+console.log(meleeRangedGrouping("")); // []
