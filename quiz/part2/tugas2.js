@@ -11,19 +11,14 @@ Jika input adalah string kosong ('') maka return array kosong
 function meleeRangedGrouping(str) {
   if (str === "") return [];
 
-  let ranged = [];
-  let melee = [];
+  const ranged = [];
+  const melee = [];
 
-  let listHero = str.split(",");
-
-  for (let item of listHero) {
-    let [name, type] = item.split('-')
-    if (type === "Ranged") {
-      ranged.push(name);
-    } else if (type === "Melee") {
-      melee.push(name);
-    }
-  }
+  str.split(",").forEach((attack) => {
+    const [name, type] = attack.split("-");
+    if (type === "Ranged") ranged.push(name);
+    else if (type === "Melee") melee.push(name);
+  });
   return [ranged, melee];
 }
 
